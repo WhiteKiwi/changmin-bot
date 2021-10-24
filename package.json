@@ -1,0 +1,39 @@
+{
+	"name": "changmin-bot",
+	"version": "1.0.0",
+	"main": "src/main.ts",
+	"repository": "https://github.com/WhiteKiwi/changmin-bot",
+	"author": "whitekiwi <jh145478@gmail.com>",
+	"license": "MIT",
+	"packageManager": "yarn@3.0.2",
+	"engines": {
+		"node": "16.x"
+	},
+	"scripts": {
+		"prebuild": "rimraf dist",
+		"build": "yarn prebuild && tsc",
+		"start": "yarn node dist/main.js",
+		"start:dev": "yarn ts-node src/main.ts"
+	},
+	"dependencies": {
+		"discord.js": "^13.2.0",
+		"dotenv": "^10.0.0",
+		"rimraf": "^3.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.4",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^8.1.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"jest": "^27.3.1",
+		"prettier": "^2.4.1",
+		"ts-jest": "^27.0.7",
+		"ts-loader": "^9.2.6",
+		"ts-node": "^10.4.0",
+		"tsconfig-paths": "^3.11.0",
+		"typescript": "^4.4.4"
+	}
+}
