@@ -3,6 +3,7 @@ dotenv.config()
 
 export const config = {
 	BOT_TOKEN: process.env.BOT_TOKEN,
+	PREFIX: process.env.PREFIX,
 } as const
 
 const mustNotBeEmptyConfigKey: (keyof typeof config)[] = ['BOT_TOKEN']

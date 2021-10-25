@@ -7,6 +7,8 @@ export class ChatBot {
 	private readonly client: Client
 	private interactions: Interaction[] = []
 
+	private prefix?: string
+
 	constructor({ token }: { token: string }) {
 		this.token = token
 		this.client = new Client({
@@ -17,6 +19,10 @@ export class ChatBot {
 		})
 		this.client.on('messageCreate', (message) => {
 			for (const interaction of this.interactions) {
+				// prefix가 있는데 message가 prefix에 해당하지 않으면 스킵
+				if (this.prefix && !message.content.startsWith(this.prefix))
+					continue
+
 				if (interaction.discoverFunction(message)) {
 					interaction.reactFunction(message)
 				}
@@ -28,8 +34,8 @@ export class ChatBot {
 		this.interactions = interactions
 	}
 
-	addInteraction(interaction: Interaction) {
-		this.interactions.push(interaction)
+	setPrefix(prefix: string) {
+		this.prefix = prefix
 	}
 
 	start() {
