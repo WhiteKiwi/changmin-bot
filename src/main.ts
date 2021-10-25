@@ -18,6 +18,10 @@ async function main() {
 			discoverFunction: match('창민밥줘', { ignoreSpace: true }),
 			reactFunction: staticReply('아옳옳옳옳옳옳옳옳옳!'),
 		},
+		{
+			discoverFunction: match('창민이불러줘', { ignoreSpace: true }),
+			reactFunction: staticReply('<@399404459303895040>'),
+		},
 	])
 	chatBot.start()
 }
