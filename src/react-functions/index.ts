@@ -27,3 +27,7 @@ export function randomReply(
 		message.reply(replytext)
 	}
 }
+
+export function hungerStatReply(): ReactFunction {
+	return (message: Message) => {
+		message.reply('창민이 배 완전 고프다')
