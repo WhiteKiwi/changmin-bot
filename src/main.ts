@@ -20,6 +20,7 @@ async function main() {
 			reactFunction: staticReply('<@399404459303895040>'),
 		},
 	])
+	chatBot.setPrefix(config.PREFIX)
 	chatBot.start()
 }
 main()
