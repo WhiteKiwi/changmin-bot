@@ -1,13 +1,10 @@
-import dotenv from 'dotenv'
-
 import { ChatBot } from './chatbot'
+import { config } from './config'
 import { match } from './discover-functions'
 import { staticReply } from './react-functions'
 
-dotenv.config()
-
 async function main() {
-	const chatBot = new ChatBot({ token: process.env.BOT_TOKEN })
+	const chatBot = new ChatBot({ token: config.BOT_TOKEN })
 
 	chatBot.setInteractions([
 		{
