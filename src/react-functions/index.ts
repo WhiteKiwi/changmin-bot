@@ -1,5 +1,6 @@
 import { Message } from 'discord.js'
 
+import { pseudoRandom } from '../lib'
 import { ReactFunction } from '../types'
 
 export function staticReply(replyText: string): ReactFunction {
@@ -14,17 +15,15 @@ export function randomReply(
 ): ReactFunction {
 	return (message: Message) => {
 		if (option?.seed) {
-			const today = new Date(option.seed)
-			const todayNum =
-				today.getDate().toString() +
-				today.getMonth().toString() +
-				today.getFullYear().toString()
-			const replytext = args[parseInt(todayNum) % args.length]
-			message.reply(replytext)
-		} else {
-			const randomNum = Math.floor(Math.random() * args.length)
+			const randomNum = pseudoRandom(option.seed) % args.length
 			const replytext = args[randomNum]
 			message.reply(replytext)
+
+			return
 		}
+
+		const randomNum = Math.floor(Math.random() * args.length)
+		const replytext = args[randomNum]
+		message.reply(replytext)
 	}
 }

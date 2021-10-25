@@ -31,7 +31,13 @@ async function main() {
 					'오늘의 창민이는 더러워요!',
 					'오늘의 창민이는 한심해요!',
 				],
-				{ seed: new Date().getTime() },
+				{
+					seed: new Date(
+						new Date().getFullYear(),
+						new Date().getMonth(),
+						new Date().getDate(),
+					).getTime(),
+				},
 			),
 		},
 	])
