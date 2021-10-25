@@ -7,3 +7,11 @@ export function staticReply(replyText: string): ReactFunction {
 		message.reply(replyText)
 	}
 }
+
+export function randomReply(...args: string[]): ReactFunction {
+	return (message: Message) => {
+		const randNum = Math.floor(Math.random() * arguments.length)
+		const replytext = arguments[randNum]
+		message.reply(replytext)
+	}
+}
