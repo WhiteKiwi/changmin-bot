@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:76a739a7c198d2c0f9a655bdfde06f498c8dcd5e3b47ddc4d1fd05f7170df8cd4eaf564f6b988c457839eabe8328315f11b0b1c41963a1a45f27809953c0331c#npm:5.1.0"],
             ["@typescript-eslint/parser", "virtual:76a739a7c198d2c0f9a655bdfde06f498c8dcd5e3b47ddc4d1fd05f7170df8cd4eaf564f6b988c457839eabe8328315f11b0b1c41963a1a45f27809953c0331c#npm:5.1.0"],
@@ -1400,6 +1401,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/jest", [
+        ["npm:27.0.2", {
+          "packageLocation": "./.yarn/cache/@types-jest-npm-27.0.2-f9ba43c7f9-814ad5f5d2.zip/node_modules/@types/jest/",
+          "packageDependencies": [
+            ["@types/jest", "npm:27.0.2"],
+            ["jest-diff", "npm:27.3.1"],
+            ["pretty-format", "npm:27.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/json-schema", [
         ["npm:7.0.9", {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.9-361918cff3-259d0e25f1.zip/node_modules/@types/json-schema/",
@@ -2213,6 +2225,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["changmin-bot", "workspace:."],
+            ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.4"],
             ["@typescript-eslint/eslint-plugin", "virtual:76a739a7c198d2c0f9a655bdfde06f498c8dcd5e3b47ddc4d1fd05f7170df8cd4eaf564f6b988c457839eabe8328315f11b0b1c41963a1a45f27809953c0331c#npm:5.1.0"],
             ["@typescript-eslint/parser", "virtual:76a739a7c198d2c0f9a655bdfde06f498c8dcd5e3b47ddc4d1fd05f7170df8cd4eaf564f6b988c457839eabe8328315f11b0b1c41963a1a45f27809953c0331c#npm:5.1.0"],
@@ -5858,7 +5871,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/core", null],
             ["@types/babel-jest", null],
             ["@types/babel__core", null],
-            ["@types/jest", null],
+            ["@types/jest", "npm:27.0.2"],
             ["@types/typescript", null],
             ["babel-jest", null],
             ["bs-logger", "npm:0.2.6"],
