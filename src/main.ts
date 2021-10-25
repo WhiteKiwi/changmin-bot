@@ -14,6 +14,10 @@ async function main() {
 			discoverFunction: match('창민물줘', { ignoreSpace: true }),
 			reactFunction: staticReply('아옳옳옳!'),
 		},
+		{
+			discoverFunction: match('창민밥줘', { ignoreSpace: true }),
+			reactFunction: staticReply('아옳옳옳옳옳옳옳옳옳!'),
+		},
 	])
 	chatBot.start()
 }
