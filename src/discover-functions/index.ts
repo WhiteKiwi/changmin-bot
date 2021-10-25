@@ -27,7 +27,7 @@ export function startWith(
 	return (message: Message) => {
 		let content = message.content
 		if (option?.ignoreSpace) content = removeSpaces(content)
-		return message.content.startsWith(keyword)
+		return content.startsWith(keyword)
 	}
 }
 
@@ -40,6 +40,6 @@ export function includes(
 	return (message: Message) => {
 		let content = message.content
 		if (option?.ignoreSpace) content = removeSpaces(content)
-		return message.content.includes(keyword)
+		return content.includes(keyword)
 	}
 }
