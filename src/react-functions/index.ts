@@ -8,10 +8,14 @@ export function staticReply(replyText: string): ReactFunction {
 	}
 }
 
-export function randomReply(...args: string[]): ReactFunction {
+export function todayRandomReply(...args: string[]): ReactFunction {
 	return (message: Message) => {
-		const randNum = Math.floor(Math.random() * arguments.length)
-		const replytext = arguments[randNum]
+		const today = new Date()
+		const todayNum =
+			today.getDate().toString() +
+			today.getMonth().toString() +
+			today.getFullYear().toString()
+		const replytext = arguments[parseInt(todayNum) % arguments.length]
 		message.reply(replytext)
 	}
 }
