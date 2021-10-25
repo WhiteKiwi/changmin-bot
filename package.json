@@ -13,7 +13,11 @@
 		"prebuild": "rimraf dist",
 		"build": "yarn prebuild && tsc",
 		"start": "yarn node dist/main.js",
-		"start:dev": "yarn ts-node src/main.ts"
+		"start:dev": "yarn ts-node src/main.ts",
+		"test": "jest --forceExit",
+		"test:watch": "jest --watch",
+		"test:cov": "jest --coverage --forceExit",
+		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
 	},
 	"dependencies": {
 		"discord.js": "^13.2.0",
@@ -21,6 +25,7 @@
 		"rimraf": "^3.0.2"
 	},
 	"devDependencies": {
+		"@types/jest": "^27.0.2",
 		"@types/node": "^16.11.4",
 		"@typescript-eslint/eslint-plugin": "^5.1.0",
 		"@typescript-eslint/parser": "^5.1.0",
