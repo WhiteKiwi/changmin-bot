@@ -20,8 +20,12 @@ export class ChatBot {
 		this.client.on('messageCreate', (message) => {
 			for (const interaction of this.interactions) {
 				// prefix가 있는데 message가 prefix에 해당하지 않으면 스킵
-				if (this.prefix && !message.content.startsWith(this.prefix))
-					continue
+				if (this.prefix) {
+					if (!message.content.startsWith(this.prefix)) continue
+					// prefix 제거
+					const regex = new RegExp('^' + this.prefix, 'gi')
+					message.content = message.content.replace(regex, '')
+				}
 
 				if (interaction.discoverFunction(message)) {
 					interaction.reactFunction(message)
