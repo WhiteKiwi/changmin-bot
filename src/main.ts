@@ -3,6 +3,12 @@ import { config } from './config'
 import { match } from './discover-functions'
 import { randomReply, staticReply } from './react-functions'
 
+/*-- damagochi --*/
+import { hungerStatReply } from './react-functions'
+
+/*-- database -- */
+import { mysqlDB } from './database'
+
 async function main() {
 	const chatBot = new ChatBot({ token: config.BOT_TOKEN })
 
@@ -40,8 +46,14 @@ async function main() {
 				},
 			),
 		},
+		{
+			discoverFunction: match('창민 배고파?', { ignoreSpace: true }),
+			reactFunction: hungerStatReply(),
+		},
 	])
 	chatBot.setPrefix(config.PREFIX)
 	chatBot.start()
 }
+
+mysqlDB.connect()
 main()
