@@ -1,6 +1,7 @@
 import { ChatBot } from './chatbot'
 import { config } from './config'
 import { match } from './discover-functions'
+import { getRandomFromDate } from './lib'
 import { randomReply, staticReply } from './react-functions'
 
 async function main() {
@@ -21,23 +22,18 @@ async function main() {
 		},
 		{
 			discoverFunction: match('오늘의선창민', { ignoreSpace: true }),
-			reactFunction: randomReply(
-				[
-					'오늘의 창민이는 맛있어요!',
-					'오늘의 창민이는 잘생겼어요!',
-					'오늘의 창민이는 재밌어요!',
-					'오늘의 창민이는 못생겼어요!',
-					'오늘의 창민이는 깨끗해요!',
-					'오늘의 창민이는 더러워요!',
-					'오늘의 창민이는 한심해요!',
-				],
-				{
-					seed: new Date(
-						new Date().getFullYear(),
-						new Date().getMonth(),
-						new Date().getDate(),
-					).getTime(),
-				},
+			reactFunction: staticReply(
+				'오늘의 창민이는 ' +
+					[
+						'맛있어요!',
+						'이상해요!',
+						'재밌어요!',
+						'못생겼어요!',
+						'깨끗해요!',
+						'더러워요!',
+						'한심해요!',
+						'슬퍼요!',
+					][getRandomFromDate() % 8],
 			),
 		},
 	])
