@@ -1,1 +1,1 @@
-export * from './get-random-by-key'
+export * from './get-random-number-by-key'
