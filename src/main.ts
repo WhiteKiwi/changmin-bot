@@ -1,4 +1,4 @@
-import { getRandomByKey } from './common/lib'
+import { getRandomNumberByKey } from './common/lib'
 import { ChatBot, config } from './core/'
 import { includes, match, startWith } from './discover-functions'
 import { replyByCallback, staticReply } from './react-functions'
@@ -33,7 +33,7 @@ async function main() {
 					'오늘의 창민이는 슬퍼요!',
 				]
 				const todayKey = new Date().toISOString().slice(0, 10)
-				const index = getRandomByKey(todayKey) % 8
+				const index = getRandomNumberByKey(todayKey) % 8
 				return changminStatuses[index]
 			}),
 		},

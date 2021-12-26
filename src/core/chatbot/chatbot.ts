@@ -15,7 +15,7 @@ export class ChatBot {
 			intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 		})
 		this.client.on('ready', () => {
-			console.log(`Logged in as ${this.client.user.tag}!`)
+			console.log(`Logged in as ${this.client.user?.tag || 'Unknown'}!`)
 		})
 		this.client.on('messageCreate', (message) => {
 			// prefix가 있는데 message가 prefix에 해당하지 않으면 스킵
