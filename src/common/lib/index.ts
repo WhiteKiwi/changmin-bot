@@ -1,1 +1,1 @@
-export * from './get-random-from-date'
+export * from './get-random-by-key'
