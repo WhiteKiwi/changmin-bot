@@ -1,7 +1,7 @@
-import { getRandomFromDate } from './common/lib'
+import { getRandomByKey } from './common/lib'
 import { ChatBot, config } from './core/'
 import { includes, match, startWith } from './discover-functions'
-import { staticReply } from './react-functions'
+import { replyByCallback, staticReply } from './react-functions'
 
 async function main() {
 	const chatBot = new ChatBot({ token: config.BOT_TOKEN })
@@ -21,19 +21,21 @@ async function main() {
 		},
 		{
 			discoverFunction: match('오늘의선창민', { ignoreSpace: true }),
-			reactFunction: staticReply(
-				'오늘의 창민이는 ' +
-					[
-						'맛있어요!',
-						'이상해요!',
-						'재밌어요!',
-						'못생겼어요!',
-						'깨끗해요!',
-						'더러워요!',
-						'한심해요!',
-						'슬퍼요!',
-					][getRandomFromDate() % 8],
-			),
+			reactFunction: replyByCallback(() => {
+				const changminStatuses = [
+					'오늘의 창민이는 맛있어요!',
+					'오늘의 창민이는 이상해요!',
+					'오늘의 창민이는 재밌어요!',
+					'오늘의 창민이는 못생겼어요!',
+					'오늘의 창민이는 안더러워요!',
+					'오늘의 창민이는 더러워요!',
+					'오늘의 창민이는 한심해요!',
+					'오늘의 창민이는 슬퍼요!',
+				]
+				const todayKey = new Date().toISOString().slice(0, 10)
+				const index = getRandomByKey(todayKey) % 8
+				return changminStatuses[index]
+			}),
 		},
 		{
 			discoverFunction: includes('게임추천', { ignoreSpace: true }),
