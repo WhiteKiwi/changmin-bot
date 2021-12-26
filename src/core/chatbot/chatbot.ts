@@ -21,7 +21,7 @@ export class ChatBot {
 		this.client.on('ready', () => {
 			console.log(`Logged in as ${this.client.user?.tag || 'Unknown'}!`)
 		})
-		this.client.on('messageCreate', (message) => {
+		this.client.on('messageCreate', async (message) => {
 			// prefix가 있는데 message가 prefix에 해당하지 않으면 스킵
 			if (this.prefix && !message.content.startsWith(this.prefix)) return
 			// prefix 제거
@@ -29,8 +29,8 @@ export class ChatBot {
 			message.content = message.content.replace(regex, '')
 
 			for (const interaction of this.interactions) {
-				if (interaction.discoverFunction(message)) {
-					interaction.reactFunction(message)
+				if (await interaction.discoverFunction(message)) {
+					await interaction.reactFunction(message)
 				}
 			}
 		})
