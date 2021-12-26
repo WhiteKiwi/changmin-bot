@@ -1,7 +1,6 @@
-import { ChatBot } from './chatbot'
-import { config } from './config'
+import { getRandomFromDate } from './common/lib'
+import { ChatBot, config } from './core/'
 import { includes, match, startWith } from './discover-functions'
-import { getRandomFromDate } from './lib'
 import { staticReply } from './react-functions'
 
 async function main() {
