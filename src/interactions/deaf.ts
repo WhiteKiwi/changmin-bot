@@ -6,13 +6,23 @@ import { interactWith창민이 } from '../core/react-functions/interact-with-창
 export const deaf창민 = {
 	discoverFunction: includes(['창민', '귀막아']),
 	reactFunction: interactWith창민이(async (창민이: GuildMember) => {
-		await 창민이.voice.setDeaf(true)
+		try {
+			await 창민이.voice.setDeaf(true)
+		} catch (e) {
+			console.log(e)
+			// TODO: 에러처리
+		}
 	}),
 }
 
 export const undeaf창민 = {
 	discoverFunction: includes(['창민', '들어']),
 	reactFunction: interactWith창민이(async (창민이: GuildMember) => {
-		await 창민이.voice.setDeaf(false)
+		try {
+			await 창민이.voice.setDeaf(false)
+		} catch (e) {
+			console.log(e)
+			// TODO: 에러처리
+		}
 	}),
 }
