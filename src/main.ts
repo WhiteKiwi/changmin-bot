@@ -1,10 +1,23 @@
+import { getRepository } from 'typeorm'
+
 import { ChatBot } from './chatbot'
 import { config } from './config'
+import { initializeConnection } from './core'
 import { includes, match, startWith } from './discover-functions'
 import { getRandomFromDate } from './lib'
 import { staticReply } from './react-functions'
+import { Test } from './typeorm/entities/test.entity'
 
 async function main() {
+	await initializeConnection()
+
+	const testRepository = getRepository(Test)
+
+	await testRepository.insert({
+		content: 'test2',
+	})
+	console.log(await testRepository.find())
+
 	const chatBot = new ChatBot({ token: config.BOT_TOKEN })
 
 	chatBot.setInteractions([
