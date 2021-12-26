@@ -40,7 +40,7 @@ async function main() {
 			reactFunction: staticReply('당연히 APEX 지'),
 		},
 		{
-			discoverFunction: startWith('물', { ignoreSpace: true }),
+			discoverFunction: match('물', { ignoreSpace: true }),
 			reactFunction: staticReply('꾸에에에에에에엙!'),
 		},
 		{
