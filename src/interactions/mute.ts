@@ -1,11 +1,10 @@
-import { GuildMember } from 'discord.js'
-
+import { Interaction } from '../common'
 import { includes } from '../core/discover-functions'
-import { interactWith창민이 } from '../core/react-functions/interact-with-창민이'
+import { react } from '../core/react-functions'
 
-export const mute창민 = {
+export const mute창민: Interaction = {
 	discoverFunction: includes(['창민', '닥쳐']),
-	reactFunction: interactWith창민이(async (창민이: GuildMember) => {
+	reactFunction: react(async ({ 창민이 }) => {
 		try {
 			await 창민이.voice.setMute(true)
 		} catch (e) {
@@ -15,9 +14,9 @@ export const mute창민 = {
 	}),
 }
 
-export const unmute창민 = {
+export const unmute창민: Interaction = {
 	discoverFunction: includes(['창민', '대답']),
-	reactFunction: interactWith창민이(async (창민이: GuildMember) => {
+	reactFunction: react(async ({ 창민이 }) => {
 		try {
 			await 창민이.voice.setMute(false)
 		} catch (e) {

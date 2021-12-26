@@ -1,11 +1,10 @@
-import { GuildMember } from 'discord.js'
-
+import { Interaction } from '../common'
 import { includes } from '../core/discover-functions'
-import { interactWith창민이 } from '../core/react-functions/interact-with-창민이'
+import { react } from '../core/react-functions'
 
-export const kick창민 = {
+export const kick창민: Interaction = {
 	discoverFunction: includes(['창민', '나가']),
-	reactFunction: interactWith창민이(async (창민이: GuildMember) => {
+	reactFunction: react(async ({ 창민이 }) => {
 		try {
 			await 창민이.voice.disconnect('바이')
 		} catch (e) {
