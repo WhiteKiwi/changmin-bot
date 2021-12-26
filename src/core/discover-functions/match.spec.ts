@@ -1,4 +1,4 @@
-import { Message } from '../common/types'
+import { Message } from '../../common/types'
 import { match } from '.'
 
 describe('match', () => {

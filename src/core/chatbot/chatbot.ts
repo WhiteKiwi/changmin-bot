@@ -12,7 +12,11 @@ export class ChatBot {
 	constructor({ token }: { token: string }) {
 		this.token = token
 		this.client = new Client({
-			intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+			intents: [
+				Intents.FLAGS.GUILDS,
+				Intents.FLAGS.GUILD_MESSAGES,
+				Intents.FLAGS.GUILD_MEMBERS,
+			],
 		})
 		this.client.on('ready', () => {
 			console.log(`Logged in as ${this.client.user?.tag || 'Unknown'}!`)

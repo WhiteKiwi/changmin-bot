@@ -1,4 +1,4 @@
-import { DiscoverFunction, Message } from '../common/types'
+import { DiscoverFunction, Message } from '../../common/types'
 export type TextParsingOption = { ignoreSpace: boolean }
 
 function removeSpaces(text: string): string {
@@ -32,14 +32,26 @@ export function startWith(
 }
 
 export function includes(
-	keyword: string,
+	keywords: string | string[],
 	option?: TextParsingOption,
 ): DiscoverFunction {
-	if (option?.ignoreSpace) keyword = removeSpaces(keyword)
+	if (!Array.isArray(keywords)) {
+		keywords = [keywords]
+	}
+
+	if (option?.ignoreSpace) {
+		for (let i = 0; i < keywords.length; i++) {
+			keywords[i] = removeSpaces(keywords[i])
+		}
+	}
 
 	return (message: Message) => {
 		let content = message.content
 		if (option?.ignoreSpace) content = removeSpaces(content)
-		return content.includes(keyword)
+
+		for (const keyword of keywords) {
+			if (!content.includes(keyword)) return false
+		}
+		return true
 	}
 }
