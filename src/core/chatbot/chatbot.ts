@@ -1,6 +1,6 @@
 import { Client, Intents } from 'discord.js'
 
-import { Interaction } from '../types'
+import { Interaction } from '../../common/types'
 
 export class ChatBot {
 	private readonly token: string

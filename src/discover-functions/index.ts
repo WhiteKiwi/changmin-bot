@@ -1,4 +1,4 @@
-import { DiscoverFunction, Message } from '../types'
+import { DiscoverFunction, Message } from '../common/types'
 export type TextParsingOption = { ignoreSpace: boolean }
 
 function removeSpaces(text: string): string {
