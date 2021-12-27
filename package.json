@@ -5,7 +5,7 @@
 	"repository": "https://github.com/WhiteKiwi/changmin-bot",
 	"author": "whitekiwi <jh145478@gmail.com>",
 	"license": "MIT",
-	"packageManager": "yarn@3.0.2",
+	"packageManager": "yarn@3.1.1",
 	"engines": {
 		"node": "16.x"
 	},
@@ -22,6 +22,7 @@
 	"dependencies": {
 		"discord.js": "^13.2.0",
 		"dotenv": "^10.0.0",
+		"mongodb": "^4.2.2",
 		"rimraf": "^3.0.2"
 	},
 	"devDependencies": {
