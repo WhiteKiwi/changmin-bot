@@ -1,18 +1,21 @@
-export function runChangminLangInterpreter(message: string): string {
+function assertChangminLang(message: string) {
+	if (message.split('\n')[0].replaceAll(' ', '') != '창민그거해봐그거') {
+		throw new Error('코드의 시작이 적절하지 않습니다')
+	}
+}
+
+export function runChangminLang(message: string): string {
+	assertChangminLang(message)
+
 	let variables: Record<string, number> = {}
 	let output: string = ''
 
-	let codeArray = message.split('\n')
-	for (let index = 0; index < codeArray.length; index++) {
+	let lines = message.split('\n')
+	for (const line of lines) {
 		// 공백 제거
-		const code = codeArray[index].replace(/ /gi, '')
+		const code = line.replaceAll(' ', '')
 
-		// 코드의 시작이 잘못되었을 때 예외 발생
-		if (index == 0 && code != '창민그거해봐그거') {
-			throw new Error('코드의 시작이 적절하지 않습니다')
-		}
-
-		if (code == '') continue
+		if (!code) continue
 
 		// 변수 생성 or 대입
 		if (code.startsWith('창민이') && code.includes('다')) {
@@ -47,11 +50,7 @@ export function runChangminLangInterpreter(message: string): string {
 		}
 	}
 
-	if (output == '') {
-		return '창민창민!'
-	}
-
-	return output
+	return output || '창민창민!'
 }
 
 function convertChangminDataToNumber(
@@ -60,7 +59,7 @@ function convertChangminDataToNumber(
 ): number {
 	let result = 0
 
-	if (changminData == '') {
+	if (!changminData) {
 		return result
 	}
 
