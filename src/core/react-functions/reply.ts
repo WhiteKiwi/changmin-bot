@@ -11,6 +11,9 @@ export function reply(
 				? replyText
 				: replyText(message.content)
 		await message.reply(text)
-		await client.insert('replyLogs', { Original: content, Reply: text })
+		await client.insert('replyLogs', {
+			Original: message.content,
+			Reply: text,
+		})
 	})
 }
