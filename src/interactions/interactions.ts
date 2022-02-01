@@ -1,6 +1,7 @@
 import { Interaction, 창민이SnowFlake } from '../common'
 import { includes, match } from '../core/discover-functions'
 import { reply } from '../core/react-functions'
+import { changminLang } from './changmin-lang'
 import { 창민_대기, 창민_잘자 } from './channel'
 import { deaf창민, undeaf창민 } from './deaf'
 import { kick창민 } from './kick'
@@ -16,6 +17,7 @@ export const interactions: Interaction[] = [
 	kick창민,
 	창민_대기,
 	창민_잘자,
+	changminLang,
 	{
 		discoverFunction: match('창민물줘', { ignoreSpace: true }),
 		reactFunction: reply('아옳옳옳!'),
