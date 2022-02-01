@@ -1,4 +1,4 @@
-export function getChangminLangOutput(message: string): string {
+export function runChangminLangInterpreter(message: string): string {
 	let variables: Record<string, number> = {}
 	let output: string = ''
 
@@ -9,18 +9,17 @@ export function getChangminLangOutput(message: string): string {
 
 		// 코드의 시작이 잘못되었을 때 예외 발생
 		if (index == 0 && code != '창민그거해봐그거') {
-			output = ChangminException.InvalidInitialException
-			break
+			throw new Error('코드의 시작이 적절하지 않습니다')
 		}
 
 		if (code == '') continue
 
-		// 변수 생성 및 대입
+		// 변수 생성 or 대입
 		if (code.startsWith('창민이') && code.includes('다')) {
 			const seperatorIndex = code.indexOf('다')
 
 			const variableName: string = code.substring(3, seperatorIndex)
-			const value: number = converseChangminDataToNumber(
+			const value: number = convertChangminDataToNumber(
 				variables,
 				code.substring(seperatorIndex + 1, code.length),
 			)
@@ -32,7 +31,7 @@ export function getChangminLangOutput(message: string): string {
 		// 정수 출력
 		if (code.includes('.')) {
 			const changminData = code.substring(0, code.indexOf('.'))
-			const value = converseChangminDataToNumber(variables, changminData)
+			const value = convertChangminDataToNumber(variables, changminData)
 
 			output += value
 			continue
@@ -41,7 +40,7 @@ export function getChangminLangOutput(message: string): string {
 		// 문자 출력
 		if (code.includes('!')) {
 			const changminData = code.substring(0, code.indexOf('!'))
-			const value = converseChangminDataToNumber(variables, changminData)
+			const value = convertChangminDataToNumber(variables, changminData)
 
 			output += String.fromCharCode(value)
 			continue
@@ -49,13 +48,13 @@ export function getChangminLangOutput(message: string): string {
 	}
 
 	if (output == '') {
-		output = '창민창민!'
+		return '창민창민!'
 	}
 
 	return output
 }
 
-function converseChangminDataToNumber(
+function convertChangminDataToNumber(
 	changminVariables: Record<string, number>,
 	changminData: string,
 ): number {
@@ -79,6 +78,7 @@ function converseChangminDataToNumber(
 				result *= 10
 				break
 			default:
+				// 변수인지 확인 후 변수면 그 값을 더함
 				const temp = changminData.substring(index, changminData.length)
 				for (const variable of Object.keys(
 					changminVariables,
@@ -93,8 +93,4 @@ function converseChangminDataToNumber(
 	}
 
 	return result
-}
-
-enum ChangminException {
-	InvalidInitialException = '코드의 시작이 적절하지 않습니다',
 }
