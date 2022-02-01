@@ -1,5 +1,5 @@
 import { ReactFunction } from '../../common/types'
-import { client } from '../db/db'
+import { client } from '../db'
 import { react } from './react'
 
 export function reply(replyText: string | (() => string)): ReactFunction {
