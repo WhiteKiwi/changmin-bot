@@ -1,6 +1,8 @@
 import { IndexBuilder } from './index-builder'
 import { StringBuilder } from './string-builder'
 
+const reservedWords: string[] = ['선', '창', '민', 'ㅊ', 'ㅎ', 'ㄱ', 'ㅁ', '다']
+
 function assertChangminLang(message: string) {
 	if (message.split('\n')[0].replaceAll(' ', '') != '창민그거해봐그거') {
 		throw new Error('코드의 시작이 적절하지 않습니다.')
@@ -104,6 +106,13 @@ function runVariableAssignment(
 ) {
 	const seperatorIndex = code.indexOf('다')
 	const variableName: string = code.substring(3, seperatorIndex)
+
+	for (const word of reservedWords) {
+		if (variableName.startsWith(word)) {
+			throw new Error('사용할 수 없는 변수명을 사용하였습니다.')
+		}
+	}
+
 	const value: number = convertChangminDataToNumber(
 		variables,
 		code.substring(seperatorIndex + 1),
