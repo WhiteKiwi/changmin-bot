@@ -11,9 +11,9 @@
 	},
 	"scripts": {
 		"prebuild": "rimraf dist",
-		"build": "yarn prebuild && tsc",
-		"start": "yarn node dist/main.js",
-		"start:dev": "yarn ts-node src/main.ts",
+		"build": "prebuild && tsc",
+		"start": "node dist/main.js",
+		"start:dev": "ts-node src/main.ts",
 		"test": "jest --forceExit",
 		"test:watch": "jest --watch",
 		"test:cov": "jest --coverage --forceExit",
