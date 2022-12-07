@@ -19,6 +19,7 @@ lerna-debug.log*
 # IDEs and editors
 /.idea
 .project
+.vscore
 .classpath
 .c9/
 *.launch
@@ -28,11 +29,5 @@ lerna-debug.log*
 # ENV file
 /.env
 
-# Yarn2
-.yarn/*
-!.yarn/cache
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+
+node_modules

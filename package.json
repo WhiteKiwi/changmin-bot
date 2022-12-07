@@ -5,9 +5,9 @@
 	"repository": "https://github.com/WhiteKiwi/changmin-bot",
 	"author": "whitekiwi <jh145478@gmail.com>",
 	"license": "MIT",
-	"packageManager": "yarn@3.1.1",
 	"engines": {
-		"node": "16.x"
+		"node": "16.x",
+		"pnpm": "7.x"
 	},
 	"scripts": {
 		"prebuild": "rimraf dist",
@@ -37,7 +37,6 @@
 		"jest": "^27.3.1",
 		"prettier": "^2.4.1",
 		"ts-jest": "^27.0.7",
-		"ts-loader": "^9.2.6",
 		"ts-node": "^10.4.0",
 		"tsconfig-paths": "^3.11.0",
 		"typescript": "^4.4.4"

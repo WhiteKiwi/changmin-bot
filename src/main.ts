@@ -1,4 +1,4 @@
-import { ChatBot, config } from './core/'
+import { ChatBot, config } from './core'
 import { client } from './core/db'
 import { interactions } from './interactions'
 
